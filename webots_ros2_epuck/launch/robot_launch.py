@@ -101,6 +101,21 @@ def generate_launch_description():
         }],
     )
 
+    # robot_state_publisher = Node(
+    #     package='robot_state_publisher',
+    #     executable='robot_state_publisher',
+    #     name='robot_state_publisher',
+    #     output='screen',
+    #     parameters=[{'use_sim_time': use_sim_time, 'robot_description': robot_description}],
+    #     arguments=['epuck_webots.urdf']
+    # )
+
+    epuck_state_publisher = Node(
+        package='webots_ros2_epuck',
+        executable='epuck_state_publisher',
+        output='screen',
+    )
+
     footprint_publisher = Node(
         package='tf2_ros',
         executable='static_transform_publisher',
@@ -118,6 +133,7 @@ def generate_launch_description():
         diffdrive_controller_spawner,
         webots,
         robot_state_publisher,
+        epuck_state_publisher,
         epuck_driver,
         footprint_publisher,
         epuck_process,

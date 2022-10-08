@@ -1,6 +1,30 @@
 <?xml version="1.0" ?>
 <robot name="Epuck Webots">
     <webots>
+
+        <!-- IMU PLUGIN as per https://github.com/cyberbotics/webots_ros2/wiki/References-Devices#sensor-devices -->
+        <plugin type="webots_ros2_driver::Ros2IMU">
+            <!-- If `False`, disable the device. By default the device will be enabled. -->
+            <enabled>True</enabled>
+
+            <!-- Set the topic name of the device. By default it will be `/robotName/referenceName`. -->
+            <topicName>/IMU</topicName>
+            <!-- Set the update rate in Hz of the topic. By default the topic will be published at each simulation step. -->
+            <updateRate>10</updateRate>
+            <!-- If `True`, the device topics will constantly publish, which can slow down the simulation. -->
+            <!-- By default the topics are publishing only if there is at least one subscriber for the corresponding topic. -->
+            <alwaysOn>True</alwaysOn>
+            <!-- Set the frame ID for message headers. By default the frame ID is `referenceName`. -->
+            <frameName>new_frame_name</frameName>
+
+            <!-- Indicates the name of the inertial unit device. -->
+            <inertialUnitName>inertial unit</inertialUnitName>
+            <!-- Indicates the name of the gyro device. -->
+            <gyroName>gyro</gyroName>
+            <!-- Indicates the name of the accelerometer device. -->
+            <accelerometerName>accelerometer</accelerometerName>
+        </plugin>
+
         <device reference="ps0" type="DistanceSensor">
             <ros>
                 <topicName>/ps0</topicName>
@@ -61,6 +85,22 @@
         <device reference="tof" type="DistanceSensor">
             <ros>
                 <topicName>/tof</topicName>
+                <enabled>true</enabled>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+
+        <device reference="gps" type="GPS">
+            <ros>
+                <topicName>/gps</topicName>
+                <enabled>true</enabled>
+                <alwaysOn>true</alwaysOn>
+            </ros>
+        </device>
+
+        <device reference="inertial unit" type="IMU">
+            <ros>
+                <topicName>/IMU</topicName>
                 <enabled>true</enabled>
                 <alwaysOn>true</alwaysOn>
             </ros>

@@ -66,7 +66,8 @@ setup(
         'console_scripts': [
             'epuck_node = webots_ros2_epuck.epuck_node:main',
             'drive_calibrator = webots_ros2_epuck.drive_calibrator:main',
-            'simple_mapper = webots_ros2_epuck.simple_mapper:main'
+            'simple_mapper = webots_ros2_epuck.simple_mapper:main',
+            'epuck_state_publisher = webots_ros2_epuck.epuck_state_publisher:main',
         ],
         'launch.frontend.launch_extension': ['launch_ros = launch_ros']
     }
