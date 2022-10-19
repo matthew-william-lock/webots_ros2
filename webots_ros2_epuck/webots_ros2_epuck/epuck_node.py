@@ -101,7 +101,7 @@ class EPuckNode(Node):
         self.__subscriber_tof = self.create_subscription(Odometry, '/odom', self.__publish_laserscan_data, 1)
 
         # Create a timer to update the odometry
-        self.create_timer(1.0 / 5.0, self.__publish_odom)
+        self.create_timer(1.0 / 30.0, self.__publish_odom)
 
     def __on_distance_sensor_message(self, i, msg):
         self.__distances['ps{}'.format(i)] = msg.range
